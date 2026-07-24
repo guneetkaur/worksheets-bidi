@@ -113,7 +113,8 @@
       <h3>Result</h3>
       <div class="big-score" id="scoreLine"></div>
       <table id="sectionTable"></table>
-      <p style="margin-bottom:0"><button class="secondary" onclick="downloadCsv()">Download results again (CSV)</button></p>
+      <p id="syncMsg" style="font-size:14px;color:var(--muted)"></p>
+      <p style="margin-bottom:0"><button class="secondary" onclick="downloadCsv()">Download results (CSV)</button></p>
     </div>
     <details class="admin" id="adminBox">
       <summary>Admin</summary>
@@ -236,6 +237,18 @@ const WORKSHEETS = [
       questions: mul([[3,2],[3,5],[3,7],[3,4],[3,9],[3,6],[3,8],[3,10],[4,3],[4,6],[4,4],[4,8],[4,7],[4,5],[4,9],[4,10]]) },
     { title: "Mixed bag — tables 2 to 5, jumbled", marks: 12, layout: "grid",
       questions: mul([[3,8],[7,2],[5,5],[9,4],[2,2],[6,3],[8,5],[4,4],[7,3],[10,4],[9,5],[8,4]]) }
+  ]
+},
+{
+  id: "mul-rev-1", track: "Mental Math — Multiplication", title: "Revision Drill 1 — Tables 3 & 4 (weak facts)", marks: 30,
+  note: "Trick reminder: ×3 = double it, then one more set (3 × 8 = 16 + 8). ×4 = double-double (4 × 7 → 14 → 28).",
+  sections: [
+    { title: "The facts to nail — say the trick out loud first", marks: 10, layout: "grid",
+      questions: mul([[3,8],[3,9],[4,6],[4,7],[4,9],[8,4],[6,3],[4,4],[9,3],[7,4]]) },
+    { title: "Same facts, jumbled with easy ones", marks: 12, layout: "grid",
+      questions: mul([[2,6],[3,8],[5,4],[4,9],[10,7],[3,9],[2,8],[4,7],[5,8],[6,3],[8,4],[4,6]]) },
+    { title: "Speed strip — quick sums to finish!", marks: 8, layout: "grid",
+      questions: mul([[3,8],[4,7],[3,9],[4,9],[4,4],[6,3],[8,4],[2,6]]) }
   ]
 },
 {
@@ -5716,8 +5729,19 @@ function renderCatalogue() {
   const a = assigned.ids;
   const tracks = [...new Set(WORKSHEETS.map(w => w.track))];
   $("catalogue").classList.remove("hidden");
+  const cfg = gh.cfg || {};
   $("catalogue").innerHTML =
-    `<p class="instr">Tick a sheet to put it on Ambar's home screen. "Link" copies a direct URL to just that sheet (for hosted use).</p>` +
+    `<div style="border:1px solid var(--green-mid);border-radius:8px;padding:10px 14px;margin-bottom:14px">
+      <b style="color:var(--green-dark)">GitHub results sync</b>
+      <p class="instr" style="margin:4px 0 8px">When set up, every finished worksheet appends its results to <code>results/results.csv</code> in your repo — no manual CSV downloads. Token is stored only on this device.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:14px">
+        <input id="ghRepo" placeholder="owner/repo e.g. mandeep/ambar-worksheets" value="${cfg.repo || ""}" style="border:1px solid var(--line);border-radius:5px;padding:6px 10px;width:280px">
+        <input id="ghToken" type="password" placeholder="fine-grained token" value="${cfg.token || ""}" style="border:1px solid var(--line);border-radius:5px;padding:6px 10px;width:220px">
+        <button class="secondary" onclick="saveGh()">Save &amp; test</button>
+      </div>
+      <p id="ghMsg" class="instr" style="margin:6px 0 0">${cfg.repo ? "Sync is ON for " + cfg.repo : "Sync is OFF — results download as CSV files."}</p>
+    </div>
+    <p class="instr">Tick a sheet to put it on Ambar's home screen. "Link" copies a direct URL to just that sheet (for hosted use).</p>` +
     tracks.map(t =>
       `<h2 class="track" style="font-size:15px">${t}</h2>` +
       [...NOTES.filter(n => n.track === t), ...WORKSHEETS.filter(w => w.track === t)].map(w => {
@@ -5875,7 +5899,63 @@ function submitSheet() {
   $("resultBox").scrollIntoView({ behavior: "smooth" });
   store.save({ id: current.id, date: $("date").value, student: $("student").value,
     score: total, max: current.marks, totalTime: totalTime() });
-  downloadCsv();
+  // push to GitHub if configured; fall back to CSV download
+  $("syncMsg").textContent = "";
+  if (gh.cfg) {
+    $("syncMsg").textContent = "Saving results…";
+    ghSync(lastRows).then(ok => {
+      $("syncMsg").textContent = ok ? "Results saved to GitHub ✓" : "Could not save to GitHub — downloading CSV instead.";
+      if (!ok) downloadCsv();
+    });
+  } else {
+    downloadCsv();
+  }
+}
+
+// ============ GitHub results sync (single results/results.csv in the repo) ============
+// Token lives ONLY in this browser's localStorage — never in the page source.
+const gh = {
+  get cfg() { try { return JSON.parse(localStorage.getItem("ambar-gh") || "null"); } catch { return null; } },
+  set cfg(v) { v ? localStorage.setItem("ambar-gh", JSON.stringify(v)) : localStorage.removeItem("ambar-gh"); }
+};
+const CSV_HEADER = "worksheet,student,date,section,question_id,question,given_answer,correct_answer,is_correct,marks,section_time_s,total_time_s,submitted_at";
+function csvRows(rows) {
+  const student = $("student").value || "student";
+  const date = $("date").value || new Date().toISOString().slice(0, 10);
+  const esc = v => `"${String(v).replace(/"/g, '""')}"`;
+  const ts = new Date().toISOString();
+  return rows.map(r => [
+    current.title, student, date, r.section, r.qid, r.question,
+    r.given, r.correct, r.ok ? "yes" : "no", Math.round(r.marks * 100) / 100, r.sectionTime, totalTime(), ts
+  ].map(esc).join(",")).join("\n");
+}
+const b64encode = s => { const b = new TextEncoder().encode(s); let out = ""; b.forEach(c => out += String.fromCharCode(c)); return btoa(out); };
+const b64decode = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g, "")), c => c.charCodeAt(0)));
+async function ghSync(rows) {
+  const cfg = gh.cfg; if (!cfg || !cfg.repo || !cfg.token) return false;
+  const api = `https://api.github.com/repos/${cfg.repo}/contents/results/results.csv`;
+  const H = { Authorization: "Bearer " + cfg.token, Accept: "application/vnd.github+json" };
+  try {
+    let sha = null, existing = "";
+    const res = await fetch(api, { headers: H });
+    if (res.ok) { const j = await res.json(); sha = j.sha; existing = b64decode(j.content); }
+    else if (res.status !== 404) return false;
+    const content = (existing ? existing.replace(/\n+$/, "") : CSV_HEADER) + "\n" + csvRows(rows) + "\n";
+    const put = await fetch(api, {
+      method: "PUT", headers: H,
+      body: JSON.stringify({ message: `results: ${current.title} (${$("date").value})`, content: b64encode(content), ...(sha ? { sha } : {}) })
+    });
+    return put.ok;
+  } catch (e) { return false; }
+}
+function saveGh() {
+  const repo = $("ghRepo").value.trim(), token = $("ghToken").value.trim();
+  if (!repo || !token) { gh.cfg = null; $("ghMsg").textContent = "Sync off (repo or token empty)."; return; }
+  gh.cfg = { repo, token };
+  $("ghMsg").textContent = "Testing…";
+  fetch(`https://api.github.com/repos/${repo}`, { headers: { Authorization: "Bearer " + token } })
+    .then(r => $("ghMsg").textContent = r.ok ? "Connected ✓ — results will save to GitHub automatically." : `Failed (${r.status}) — check repo name and token.`)
+    .catch(() => $("ghMsg").textContent = "Failed — network error.");
 }
 
 function downloadCsv() {
