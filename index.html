@@ -106,7 +106,7 @@
     </div>
     <div id="sections"></div>
     <div class="submitbar">
-      <button onclick="submitSheet()">Finish &amp; Check</button>
+      <button id="submitBtn" onclick="submitSheet()">Finish &amp; Check</button>
       <div class="instr" style="margin-top:6px">Checking downloads a results file (CSV) automatically.</div>
     </div>
     <div class="result" id="resultBox">
@@ -5676,10 +5676,18 @@ const MM_STAGE_SHEETS = [{"id": "add-w8", "track": "Mental Math — LTR Addition
 WORKSHEETS.push(...MM_STAGE_SHEETS);
 NOTES.push(...[{"id": "note-mm-mul-tricks", "track": "Mental Math — Multiplication", "title": "Notes: Multiplication Tricks Cheat Sheet", "text": "MULTIPLICATION TRICKS — one page\n\nTABLES SHORTCUTS\nx2   double the number\nx3   double, then one more set          3 x 8 = 16 + 8 = 24\nx4   double-double                      4 x 7 -> 14 -> 28\nx5   half of x10                        18 x 5 = 180 / 2 = 90\nx6   x5 plus one more set               6 x 8 = 40 + 8 = 48\nx8   double three times                 8 x 6 -> 12 -> 24 -> 48\nx9   x10 minus one set                  9 x 7 = 70 - 7 = 63\nx10  put a zero on the end\n\nMEMORISE COLD (no trick, just know them)\n7 x 7 = 49      7 x 8 = 56      6 x 7 = 42      8 x 8 = 64\n\nLEFT-TO-RIGHT (2-digit x 1-digit)\n34 x 6:  30 x 6 = 180 ... SAY IT ... 4 x 6 = 24 ... 180 + 24 = 204\n\nROUND-AND-ADJUST\n39 x 6:  think 40 x 6 = 240, minus one 6 -> 234\nAnything ending in 8 or 9: round up, multiply, take back.\n\nMISSING FACTOR = DIVISION\n6 x ? = 42  ->  \"6 times what is 42?\"  ->  7. This IS division."}, {"id": "note-mm-sub-methods", "track": "Mental Math — LTR Subtraction", "title": "Notes: Subtraction Methods (LTR)", "text": "SUBTRACTION THE MENTAL WAY — one page\n\nFACTS WITHIN 20 — use the addition bond\n14 - 6  ->  \"6 + what = 14?\"  ->  8. Every bond you know is a subtraction fact too.\n\nTHE TEN-TRICK\n-9  = take 10, give back 1        45 - 9  -> 35 -> 36\n-8  = take 10, give back 2        45 - 8  -> 35 -> 37\n-11 = take 10, take one more      45 - 11 -> 35 -> 34\n\nLEFT-TO-RIGHT (no borrow)\n85 - 32:  80 - 30 = 50, then 5 - 2 = 3  ->  53\n\nROUND-AND-ADJUST (kills borrowing)\n62 - 38:  62 - 40 = 22, give back 2  ->  24\nRound the number you SUBTRACT up to a ten. Never borrow again.\n\nCOMPLEMENTS — \"all from 9, last from 10\"\n100 - 63:  9-6=3, 10-3=7  ->  37       1000 - 463: 9-4=5, 9-6=3, 10-3=7 -> 537\nPerfect for money change from Rs.100 / Rs.500 / Rs.1000."}]);
 
+
+// ============ School L3 — Addition & Subtraction up to 4 digits (2026-07-24) ============
+const L3_ADDSUB_SHEETS = [{"id": "mas-l3-1", "track": "Math — Addition & Subtraction (School L3)", "title": "L3 Worksheet 1 — Addition up to 4 Digits", "marks": 22, "note": "Stretch level. Line up the place values in your head — hundreds/thousands first, LTR style.", "sections": [{"title": "3-digit addition — spot which ones carry", "marks": 7, "questions": [{"label": "531 + 254 = [_]", "answers": [785]}, {"label": "628 + 171 = [_]", "answers": [799]}, {"label": "606 + 150 = [_]", "answers": [756]}, {"label": "426 + 197 = [_]", "answers": [623]}, {"label": "392 + 531 = [_]", "answers": [923]}, {"label": "264 + 727 = [_]", "answers": [991]}, {"label": "506 + 404 = [_]", "answers": [910]}], "layout": "grid"}, {"title": "4-digit addition", "marks": 7, "questions": [{"label": "4625 + 2351 = [_]", "answers": [6976]}, {"label": "4654 + 1321 = [_]", "answers": [5975]}, {"label": "4111 + 2376 = [_]", "answers": [6487]}, {"label": "6504 + 2159 = [_]", "answers": [8663]}, {"label": "5544 + 1682 = [_]", "answers": [7226]}, {"label": "3854 + 2259 = [_]", "answers": [6113]}, {"label": "4759 + 4402 = [_]", "answers": [9161]}], "layout": "grid"}, {"title": "Missing number", "marks": 4, "questions": [{"label": "708 + [_] = 940", "answers": [232]}, {"label": "484 + [_] = 774", "answers": [290]}, {"label": "436 + [_] = 740", "answers": [304]}, {"label": "284 + [_] = 614", "answers": [330]}], "layout": "grid"}, {"title": "Word problems — write only the number", "marks": 4, "questions": [{"label": "A library has 1368 storybooks and 2547 textbooks. How many books in all? [_]", "answers": [3915]}, {"label": "A factory made 2364 toys in January and 3548 toys in February. Total toys? [_]", "answers": [5912]}, {"label": "On day one 1245 people visited the fair, on day two 2385 people came, and on day three 998 people came. Total visitors? [_]", "answers": [4628]}, {"label": "Ambar's school collected ₹1245 for charity and the neighbouring school collected ₹3000. How much money was collected altogether? [_]", "answers": [4245]}], "layout": "lines"}]}, {"id": "mas-l3-2", "track": "Math — Addition & Subtraction (School L3)", "title": "L3 Worksheet 2 — Subtraction up to 4 Digits", "marks": 22, "note": "Stretch level. Try round-and-adjust before column borrowing: 703 − 288 → 703 − 300 + 12.", "sections": [{"title": "3-digit subtraction — spot which ones borrow", "marks": 7, "questions": [{"label": "879 − 436 = [_]", "answers": [443]}, {"label": "872 − 511 = [_]", "answers": [361]}, {"label": "466 − 222 = [_]", "answers": [244]}, {"label": "353 − 214 = [_]", "answers": [139]}, {"label": "928 − 136 = [_]", "answers": [792]}, {"label": "928 − 495 = [_]", "answers": [433]}, {"label": "558 − 465 = [_]", "answers": [93]}], "layout": "grid"}, {"title": "4-digit subtraction", "marks": 7, "questions": [{"label": "6998 − 4917 = [_]", "answers": [2081]}, {"label": "8669 − 2422 = [_]", "answers": [6247]}, {"label": "4368 − 4013 = [_]", "answers": [355]}, {"label": "9323 − 2925 = [_]", "answers": [6398]}, {"label": "7362 − 5536 = [_]", "answers": [1826]}, {"label": "9382 − 5218 = [_]", "answers": [4164]}, {"label": "9647 − 7558 = [_]", "answers": [2089]}], "layout": "grid"}, {"title": "Missing number", "marks": 4, "questions": [{"label": "532 − [_] = 218", "answers": [314]}, {"label": "830 − [_] = 216", "answers": [614]}, {"label": "329 − [_] = 191", "answers": [138]}, {"label": "565 − [_] = 257", "answers": [308]}], "layout": "grid"}, {"title": "Word problems — write only the number", "marks": 4, "questions": [{"label": "A library had 4250 books. 1875 were lent out. How many books remain? [_]", "answers": [2375]}, {"label": "A bakery made 6034 biscuits and sold 2768. How many biscuits are left? [_]", "answers": [3266]}, {"label": "Ambar wants a cycle costing ₹5000. She has saved ₹3450. How much more does she need? [_]", "answers": [1550]}, {"label": "A train route is 1372 km long. The train has covered 989 km. How many km are left? [_]", "answers": [383]}], "layout": "lines"}]}, {"id": "mas-l3-3", "track": "Math — Addition & Subtraction (School L3)", "title": "L3 Worksheet 3 — Addition & Subtraction Challenge", "marks": 16, "note": "Stretch level. Read each word problem twice — every one needs TWO steps!", "sections": [{"title": "Mixed sums — watch the sign!", "marks": 8, "questions": [{"label": "705 − 584 = [_]", "answers": [121]}, {"label": "4040 − 1325 = [_]", "answers": [2715]}, {"label": "282 + 375 = [_]", "answers": [657]}, {"label": "2195 + 7137 = [_]", "answers": [9332]}, {"label": "545 + 359 = [_]", "answers": [904]}, {"label": "794 − 749 = [_]", "answers": [45]}, {"label": "2801 + 2592 = [_]", "answers": [5393]}, {"label": "8372 − 2297 = [_]", "answers": [6075]}], "layout": "grid"}, {"title": "Missing number", "marks": 4, "questions": [{"label": "2640 + [_] = 7393", "answers": [4753]}, {"label": "3228 + [_] = 4657", "answers": [1429]}, {"label": "5063 − [_] = 2220", "answers": [2843]}, {"label": "7804 − [_] = 4034", "answers": [3770]}], "layout": "grid"}, {"title": "Two-step word problems — write only the number", "marks": 4, "questions": [{"label": "A shopkeeper earned ₹5250. He spent ₹1830 on rent and ₹2445 on stock. How much money is left? [_]", "answers": [975]}, {"label": "A school has 1684 girls and 1852 boys. 379 students were absent today. How many students came to school? [_]", "answers": [3157]}, {"label": "Ambar had 2560 stickers. She got 1745 more, then gave away 1280. How many stickers now? [_]", "answers": [3025]}, {"label": "A water tank holds 8000 litres. 5675 litres were used, then 2380 litres were refilled. How much water is in the tank now? [_]", "answers": [4705]}], "layout": "lines"}]}];
+WORKSHEETS.push(...L3_ADDSUB_SHEETS);
+const ADD_REVISION_2 = [{"id": "add-revision-2", "track": "Mental Math — LTR Addition", "title": "Revision Drill 2 — 3-digit Addition Speed Finisher", "marks": 12, "sections": [{"title": "12 sums, one sitting, no stopping — you already know every one of these", "marks": 12, "questions": [{"label": "719 + 39 = [_]", "answers": [758]}, {"label": "796 + 19 = [_]", "answers": [815]}, {"label": "332 + 324 = [_]", "answers": [656]}, {"label": "173 + 224 = [_]", "answers": [397]}, {"label": "604 + 18 = [_]", "answers": [622]}, {"label": "432 + 141 = [_]", "answers": [573]}, {"label": "145 + 233 = [_]", "answers": [378]}, {"label": "274 + 80 = [_]", "answers": [354]}, {"label": "327 + 140 = [_]", "answers": [467]}, {"label": "405 + 313 = [_]", "answers": [718]}, {"label": "296 + 58 = [_]", "answers": [354]}, {"label": "531 + 31 = [_]", "answers": [562]}], "layout": "grid"}], "note": "You've nailed the hard stage (3-digit + 3-digit with carry) already — this is just about finishing what you start. Set a 6-minute timer and don't get up till it's done!"}];
+WORKSHEETS.push(...ADD_REVISION_2);
+
 // ============ App state ============
 let current = null;          // active worksheet object
 let timing = null;           // { startedAt, submittedAt, sections: {i: {first,last}} }
 let lastRows = null;
+let submitted = false;       // guards against double-submitting the same attempt
 
 const $ = id => document.getElementById(id);
 let remoteHistory = []; // attempts pulled from results/results.csv on GitHub (any device)
@@ -5687,13 +5695,18 @@ const store = {
   get history() { try { return JSON.parse(localStorage.getItem("ambar-results") || "[]"); } catch { return []; } },
   save(rec) { const h = this.history; h.push(rec); localStorage.setItem("ambar-results", JSON.stringify(h)); },
   allFor(id) { return this.allAttempts().filter(r => r.id === id); },
+  // One row per worksheet+date. Repeated "Finish & Check" presses on the same
+  // sheet on the same day are the SAME attempt — keep the best score, count the tries.
   allAttempts() {
-    const seen = new Set(), out = [];
+    const byKey = new Map();
     this.history.concat(remoteHistory).forEach(r => {
-      const k = r.id + "|" + r.date + "|" + (r.score) + "|" + (r.totalTime || "");
-      if (seen.has(k)) return; seen.add(k); out.push(r);
+      const k = r.id + "|" + r.date;
+      const prev = byKey.get(k);
+      if (!prev) { byKey.set(k, { ...r, tries: 1 }); return; }
+      prev.tries++;
+      if ((r.score || 0) > (prev.score || 0)) { prev.score = r.score; prev.totalTime = r.totalTime; }
     });
-    return out.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+    return [...byKey.values()].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
   },
   bestFor(id) {
     const h = this.allFor(id);
@@ -5719,12 +5732,15 @@ function parseCsvText(text) {
   if (field !== "" || row.length) { row.push(field); rows.push(row); }
   return rows;
 }
+let remoteStatus = "Results sync not set up on this device — enter repo + token below and Save.";
 async function loadRemoteHistory() {
   const cfg = gh.cfg; if (!cfg || !cfg.repo || !cfg.token) return;
+  remoteStatus = "Checking GitHub for results…";
   try {
     const res = await fetch(`https://api.github.com/repos/${cfg.repo}/contents/results/results.csv`,
       { headers: { Authorization: "Bearer " + cfg.token, Accept: "application/vnd.github+json" } });
-    if (!res.ok) return;
+    if (res.status === 404) { remoteStatus = "No results/results.csv in the repo yet — it appears after the first synced attempt (or upload one)."; return; }
+    if (!res.ok) { remoteStatus = `Could not read results from GitHub (HTTP ${res.status}) — check the token.`; return; }
     const j = await res.json();
     const rows = parseCsvText(b64decode(j.content));
     const head = rows[0]; const col = n => head.indexOf(n);
@@ -5737,12 +5753,13 @@ async function loadRemoteHistory() {
       g.score += parseFloat(r[iM]) || 0;
     });
     remoteHistory = Object.values(groups).map(g => (g.score = Math.round(g.score * 10) / 10, g));
+    remoteStatus = `Loaded ${remoteHistory.length} attempt${remoteHistory.length === 1 ? "" : "s"} from GitHub ✓`;
     // refresh whichever view is open
     if (!$("home").classList.contains("hidden")) {
       renderHome();
       if (!$("catalogue").classList.contains("hidden")) renderCatalogue();
     }
-  } catch (e) { /* offline — local history still works */ }
+  } catch (e) { remoteStatus = "Offline — showing this device's results only."; }
 }
 
 // ============ Assignments (parent controls what the child sees) ============
@@ -5799,8 +5816,8 @@ function renderCatalogue() {
   const cfg = gh.cfg || {};
   const attempts = store.allAttempts();
   const doneBlock = attempts.length
-    ? `<div style="border:1px solid var(--green-mid);border-radius:8px;padding:10px 14px;margin-bottom:14px">
-        <b style="color:var(--green-dark)">Completed worksheets (${attempts.length})</b>
+    ? `<details style="border:1px solid var(--green-mid);border-radius:8px;padding:10px 14px;margin-bottom:14px">
+        <summary style="cursor:pointer;color:var(--green-dark);font-weight:bold">Completed worksheets (${attempts.length}) — click to expand</summary>
         <table style="border-collapse:collapse;width:100%;font-size:13.5px;margin-top:8px">
           <tr><th style="border:1px solid var(--line);padding:4px 9px;background:var(--green-mid);color:var(--green-dark);text-align:left">Date</th>
               <th style="border:1px solid var(--line);padding:4px 9px;background:var(--green-mid);color:var(--green-dark);text-align:left">Worksheet</th>
@@ -5811,14 +5828,15 @@ function renderCatalogue() {
           const pct = r.max ? Math.round(100 * r.score / r.max) : 0;
           const col = pct >= 90 ? "var(--green)" : pct >= 70 ? "#E65100" : "var(--red)";
           return `<tr><td style="border:1px solid var(--line);padding:4px 9px;white-space:nowrap">${r.date || "—"}</td>
-            <td style="border:1px solid var(--line);padding:4px 9px">${w ? w.title : r.id}</td>
+            <td style="border:1px solid var(--line);padding:4px 9px">${w ? w.title : r.id}${r.tries > 1 ? ` <span style="color:var(--muted);font-size:12px">(${r.tries} tries — best shown)</span>` : ""}</td>
             <td style="border:1px solid var(--line);padding:4px 9px;font-weight:bold;color:${col}">${r.score} / ${r.max}</td>
             <td style="border:1px solid var(--line);padding:4px 9px">${r.totalTime ? r.totalTime + "s" : "—"}</td></tr>`;
         }).join("") +
         `</table>${attempts.length > 30 ? `<p class="instr" style="margin:6px 0 0">Showing latest 30 of ${attempts.length}.</p>` : ""}
-       </div>`
-    : `<p class="instr">No completed worksheets yet${cfg.repo ? "" : " (set up GitHub sync below to see results from other devices)"}.</p>`;
-  $("catalogue").innerHTML = doneBlock +
+       </details>`
+    : `<p class="instr">No completed worksheets to show yet.</p>`;
+  const statusLine = `<p class="instr" style="margin:0 0 10px"><b>Results source:</b> ${remoteStatus}${attempts.length ? ` &bull; ${attempts.length} attempt(s) total (GitHub + this device)` : ""}</p>`;
+  $("catalogue").innerHTML = statusLine + doneBlock +
     `<div style="border:1px solid var(--green-mid);border-radius:8px;padding:10px 14px;margin-bottom:14px">
       <b style="color:var(--green-dark)">GitHub results sync</b>
       <p class="instr" style="margin:4px 0 8px">When set up, every finished worksheet appends its results to <code>results/results.csv</code> in your repo — no manual CSV downloads. Token is stored only on this device.</p>
@@ -5890,6 +5908,9 @@ function openWs(id) {
   current = WORKSHEETS.find(w => w.id === id);
   timing = { startedAt: null, submittedAt: null, sections: {} };
   lastRows = null;
+  submitted = false;
+  const sb = $("submitBtn");
+  if (sb) { sb.textContent = "Finish & Check"; sb.disabled = false; sb.style.opacity = 1; }
   $("home").classList.add("hidden");
   $("ws").classList.remove("hidden");
   setWsChrome(true);
@@ -5972,6 +5993,11 @@ function collect() {
 }
 
 function submitSheet() {
+  // one submission per attempt — stops duplicate rows in results.csv
+  if (submitted) return;
+  submitted = true;
+  const btn = $("submitBtn");
+  if (btn) { btn.textContent = "Checked ✓"; btn.disabled = true; btn.style.opacity = .5; }
   timing.submittedAt = timing.submittedAt || Date.now();
   lastRows = collect();
   const total = Math.round(lastRows.reduce((n, r) => n + r.marks, 0) * 10) / 10;
