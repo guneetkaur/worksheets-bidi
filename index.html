@@ -5848,9 +5848,8 @@ function renderCatalogue() {
       <p id="ghMsg" class="instr" style="margin:6px 0 0">${cfg.repo ? "Sync is ON for " + cfg.repo : "Sync is OFF — results download as CSV files."}</p>
     </div>
     <p class="instr">Tick a sheet to put it on Ambar's home screen. "Link" copies a direct URL to just that sheet (for hosted use).</p>` +
-    tracks.map(t =>
-      `<h2 class="track" style="font-size:15px">${t}</h2>` +
-      [...NOTES.filter(n => n.track === t), ...WORKSHEETS.filter(w => w.track === t)].map(w => {
+    tracks.map(t => {
+      const rowHtml = w => {
         const isNote = w.text !== undefined;
         const best = isNote ? null : store.bestFor(w.id);
         const meta = isNote ? "reading notes" : `${w.marks} marks${best ? ` &bull; best ${best.score}/${w.marks}` : ""}`;
@@ -5860,8 +5859,16 @@ function renderCatalogue() {
           <button class="secondary" style="padding:2px 10px;font-size:12px" onclick="${isNote ? "openNote" : "openWs"}('${w.id}')">Open</button>
           <button class="secondary" style="padding:2px 10px;font-size:12px" onclick="copyLink('${w.id}', this)">Link</button>
         </div>`;
-      }).join("")
-    ).join("");
+      };
+      const items = [...NOTES.filter(n => n.track === t), ...WORKSHEETS.filter(w => w.track === t)];
+      const notDone = items.filter(w => w.text === undefined ? !store.bestFor(w.id) : true);
+      const done = items.filter(w => w.text === undefined && store.bestFor(w.id));
+      return `<h2 class="track" style="font-size:15px">${t}</h2>` +
+        notDone.map(rowHtml).join("") +
+        (done.length
+          ? `<details><summary style="cursor:pointer;color:var(--muted);font-size:13px;padding:3px 0">${done.length} completed in this track — click to expand</summary>${done.map(rowHtml).join("")}</details>`
+          : "");
+    }).join("");
 }
 function copyLink(id, btn) {
   const url = location.origin === "null" || location.protocol === "file:"
