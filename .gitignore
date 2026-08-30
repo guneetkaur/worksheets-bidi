@@ -1,0 +1,15 @@
+# Generated worksheet output — rebuildable from the ambar-worksheet plugin.
+# Deliberately not versioned: binaries don't diff, and every regeneration
+# would add another full copy to history.
+*.pdf
+*.pdf#
+*.tmp
+~$*
+.DS_Store
+
+# Source photos of notebook / textbook pages (inputs, not outputs)
+**/source-images/
+**/assets/
+
+# Plugin build artefacts
+*.plugin
