@@ -10,18 +10,27 @@ Ambar's practice app, her results, and the recurring progress report.
 | `reports/_state.json` | Memory between reports: gates, open gaps, outstanding actions, `covered_through`. |
 | `worksheets/` | Syllabus progress logs (`_progress.md`), mistake journals (`_mistakes.md`), prep plans, and the `.docx` source notes per subject. |
 | `sources/` | Reference material and inputs. `reference-samples/` — the school's own sample papers and PT-1 syllabus. `sof/` — every SOF topic deep-dive and cheat sheet across IGKO, IEO, IMO and NSO, the syllabus reference behind the olympiad tracks. `handwriting/` — the handwriting pack. |
+| `plugin/` | Source of the `ambar-worksheet` Cowork plugin — the `create-worksheet` and `progress-report` skills. Edit here, repackage, install. Every path in those skills is relative to this repo. |
 | `tools/build_sheets.py` | Generates new sheets and appends them to `index.html`. Answers are computed, never typed. `--check` verifies without writing. |
 
 ## Running the report
 
-Installed as the `progress-report` skill in the `ambar-worksheet` plugin — say
-"run the progress report" in Cowork. For the raw numbers only:
+Say "run the progress report" in Cowork. For the raw numbers only, from the repo root:
 
 ```bash
-python3 <plugin>/skills/progress-report/scripts/analyse.py \
+python3 plugin/skills/progress-report/scripts/analyse.py \
   --csv results/results.csv --state reports/_state.json \
   --catalogue index.html --out /tmp/analysis.json
 ```
+
+## Rebuilding the plugin
+
+```bash
+cd plugin && zip -r ../ambar-worksheet.plugin . -x '*.DS_Store' -x '*__pycache__*'
+```
+
+Then install the `.plugin` file in Cowork. The bundle is a build artefact and is
+gitignored; `plugin/` is the source.
 
 The period is always "since the last report", read from `_state.json`.
 

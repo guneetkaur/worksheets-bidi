@@ -1,0 +1,25 @@
+{
+  "name": "ambar-worksheet",
+  "version": "0.6.0",
+  "description": "Generate CBSE Class III worksheets for Ambar across any subject - EVS, Hindi, English, Math, GK, Computer - with 3-level difficulty sets, syllabus-progress tracking and weak-topic targeting, and build the recurring progress report from the worksheets-bidi results repo.",
+  "author": {
+    "name": "Mandeep Singh"
+  },
+  "keywords": [
+    "analytics",
+    "cbse",
+    "class-3",
+    "education",
+    "english",
+    "evs",
+    "hindi",
+    "math",
+    "mistake-journal",
+    "pdf",
+    "practice-sheet",
+    "progress-report",
+    "worksheet"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/guneetkaur/worksheets-bidi"
+}
