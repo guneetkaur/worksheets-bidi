@@ -20,3 +20,7 @@
 
 # Superseded: the old in-folder copy of the skill, now shipped as the plugin
 .skills/
+
+# Notebook / textbook photos stay local — originals live in the
+# Ambar Worksheet folder, where create-worksheet reads them.
+sources/notebook-photos/
