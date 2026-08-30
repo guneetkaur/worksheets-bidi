@@ -10,9 +10,9 @@
 # Generated worksheet illustrations
 **/assets/
 
-# ...but everything under sources/ IS versioned. Those are inputs — school
-# sample papers, notebook and textbook photos, handwriting sheets. They cannot
-# be regenerated, so they are the one place binaries earn their keep.
+# ...but everything under sources/ IS versioned: school sample papers, the SOF
+# topic deep-dives and cheat sheets, handwriting. Reference material, not output —
+# the one place binaries earn their keep.
 !sources/**
 
 # Plugin build artefacts
