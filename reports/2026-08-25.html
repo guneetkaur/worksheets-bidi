@@ -1,0 +1,258 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ambar Progress Report 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--ground:#F4F3F8;--surface:#FFFFFF;--surface-2:#FAF9FC;--band:#EFEDF6;
+--ink:#191727;--ink-2:#403C56;--muted:#6B6685;--line:#E1DEEB;
+--accent:#3B3A8F;--accent-2:#6462C4;--accent-soft:#EBEAF7;
+--good:#1C7048;--good-soft:#E4F2EA;--watch:#8C5B06;--watch-soft:#FAEFDA;
+--gap:#A83226;--gap-soft:#FAE8E5;
+--shadow:0 1px 2px rgba(25,23,39,.05),0 8px 24px -14px rgba(25,23,39,.22)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--ground:#121120;--surface:#1B1929;--surface-2:#222032;--band:#232135;
+--ink:#EFEDF7;--ink-2:#C7C2DA;--muted:#948FAE;--line:#302D45;
+--accent:#A6A3F2;--accent-2:#8482DE;--accent-soft:#252347;
+--good:#5FCB92;--good-soft:#16301F;--watch:#E3A947;--watch-soft:#33280F;
+--gap:#F0836F;--gap-soft:#361C1A;
+--shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -16px rgba(0,0,0,.7)}}
+:root[data-theme="dark"]{
+--ground:#121120;--surface:#1B1929;--surface-2:#222032;--band:#232135;
+--ink:#EFEDF7;--ink-2:#C7C2DA;--muted:#948FAE;--line:#302D45;
+--accent:#A6A3F2;--accent-2:#8482DE;--accent-soft:#252347;
+--good:#5FCB92;--good-soft:#16301F;--watch:#E3A947;--watch-soft:#33280F;
+--gap:#F0836F;--gap-soft:#361C1A;
+--shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -16px rgba(0,0,0,.7)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);
+font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 88px}
+h1,h2,h3{font-family:Spectral,"Iowan Old Style",Georgia,serif;font-weight:600;text-wrap:balance;margin:0}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.mast{border-bottom:1px solid var(--line);
+background:repeating-linear-gradient(to right,var(--line) 0 1px,transparent 1px 28px),
+repeating-linear-gradient(to bottom,var(--line) 0 1px,transparent 1px 28px),var(--surface)}
+.mast-in{max-width:1080px;margin:0 auto;padding:44px 24px 34px;background:linear-gradient(to bottom,transparent,var(--surface) 88%)}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+h1{font-size:clamp(32px,5vw,48px);line-height:1.06;letter-spacing:-.015em}
+.dek{margin:14px 0 0;max-width:62ch;color:var(--ink-2);font-size:17px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:26px 0 0}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;box-shadow:var(--shadow)}
+.tile .k{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tile .v{font-family:Spectral,Georgia,serif;font-size:31px;line-height:1.15;margin-top:7px;font-variant-numeric:tabular-nums}
+.tile .s{font-size:13.5px;color:var(--muted);margin-top:3px}
+section{margin-top:56px}
+section.headline{margin-top:44px}
+.sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:22px}
+.sec-head h2{font-size:26px;letter-spacing:-.01em}
+.sec-head .note,.meta{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+h3.sub{font-size:17px;margin:22px 0 10px}
+p{margin:0 0 14px;max-width:68ch}
+.lede{font-size:18px;color:var(--ink-2)}
+.tablenote{font-size:14px;color:var(--muted);margin-top:14px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.chip.good{background:var(--good-soft);color:var(--good);border-color:var(--good)}
+.chip.watch{background:var(--watch-soft);color:var(--watch);border-color:var(--watch)}
+.chip.gap{background:var(--gap-soft);color:var(--gap);border-color:var(--gap)}
+.chip.neutral{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+.chip .dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px 24px;box-shadow:var(--shadow)}
+.card+.card{margin-top:16px}
+.card h3{font-size:20px;margin-bottom:4px}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+.stripe{border-left:3px solid var(--line)}
+.stripe.gap{border-left-color:var(--gap)}
+.stripe.watch{border-left-color:var(--watch)}
+.stripe.good{border-left-color:var(--good)}
+.stripe.neutral{border-left-color:var(--accent)}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.fix{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line);max-width:none}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:440px}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500;border-bottom:1px solid var(--ink-2)}
+td.num,th.num,.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+.wrong{color:var(--gap);font-weight:500}
+.right{color:var(--good);font-weight:500}
+.muted-cell{color:var(--muted)}
+.bars{display:grid;gap:10px}
+.bar-row{display:grid;grid-template-columns:minmax(140px,1.1fr) 1fr auto;gap:14px;align-items:center;font-size:14.5px}
+.bar-track{height:9px;border-radius:3px;background:var(--band);position:relative;overflow:hidden}
+.bar-fill{position:absolute;inset:0 auto 0 0;border-radius:3px;background:var(--accent-2)}
+.bar-val{font-family:"IBM Plex Mono",monospace;font-size:13px;font-variant-numeric:tabular-nums;color:var(--ink-2);min-width:88px;text-align:right}
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px 8px;box-shadow:var(--shadow);margin:22px 0 0}
+.chart figcaption{font-size:13.5px;color:var(--muted);margin:2px 0 12px;max-width:68ch}
+.chart svg{display:block;width:100%;height:auto}
+.grid-line{stroke:var(--line);stroke-width:1}
+.period-band{fill:var(--accent-2);opacity:.06}
+.axis-txt{font-family:"IBM Plex Mono",monospace;font-size:10.5px;fill:var(--muted)}
+.series-line{fill:none;stroke:var(--accent-2);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.series-area{fill:var(--accent-2);opacity:.10}
+.series-dot{fill:var(--surface);stroke:var(--accent-2);stroke-width:2}
+.series-dot.faded{opacity:.45}
+.series-dot:hover{fill:var(--accent-2)}
+ol.actions{counter-reset:a;list-style:none;padding:0;margin:0;display:grid;gap:12px}
+ol.actions li{counter-increment:a;display:grid;grid-template-columns:34px 1fr;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;box-shadow:var(--shadow)}
+ol.actions li::before{content:counter(a);font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--accent);border:1px solid var(--accent);border-radius:6px;height:28px;display:grid;place-items:center}
+ol.actions strong{display:block;font-size:16px;margin-bottom:2px}
+ol.actions p{margin:0;font-size:14.5px;color:var(--ink-2)}
+ul.retries{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+ul.retries li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 18px;box-shadow:var(--shadow)}
+ul.retries p{margin:4px 0 0}
+ul.plain{margin:0;padding-left:20px}
+ul.plain li{margin-bottom:8px;max-width:66ch}
+.sid{font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:var(--band);padding:2px 7px;border-radius:4px;white-space:nowrap;color:var(--ink-2)}
+.weeks{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.week{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;box-shadow:var(--shadow)}
+.week h3{font-size:17px;margin-bottom:10px}
+.week ol{margin:0;padding-left:20px;font-size:14.5px}
+.week li{margin-bottom:7px}
+.footnote{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted);max-width:none}
+.footnote code{font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:var(--band);padding:1px 5px;border-radius:4px;overflow-wrap:anywhere}
+</style></head><body>
+<header class="mast">
+  <div class="mast-in">
+    <p class="eyebrow">Fortnightly review &middot; 11 Aug – 24 Aug 2026 &middot; Class III</p>
+    <h1>Ambar Progress Report 1</h1>
+    <p class="dek">The first report in the series, covering the fortnight after the 10 August journal entry. Five practice days, 21 sheets, the clearest diagnostic finding in the file so far — and, at the end, what to give her next.</p>
+    <div class="tiles"><div class="tile"><div class="k">This period</div><div class="v">79.7%</div><div class="s">294 of 369 · 21 sheets over 5 days</div></div><div class="tile"><div class="k">Change</div><div class="v">-12.5</div><div class="s">points against 92.2% last period</div></div><div class="tile"><div class="k">All time</div><div class="v">88.4%</div><div class="s">1,065 of 1,205 · 17 practice days</div></div><div class="tile"><div class="k">Open gaps</div><div class="v">3</div><div class="s">carried until evidence closes them</div></div></div>
+  </div>
+</header>
+<div class="wrap">
+<section class="headline"><p class="lede">Subtraction with borrow broke wide open — and then half repaired itself in a single day. On 23 August she scored 0/12 on her first borrow sheet, and every one of the twelve answers came from the same wrong rule. On 24 August she re-attempted the identical sheet and got 10.</p></section>
+<section>
+  <div class="sec-head"><h2>Since the last report</h2><span class="note">11 Aug – 24 Aug 2026</span></div>
+  <p>Multiplication, which had been the standing worry since July, is effectively resolved. Tables 6 and 7 came in at 23/26 and tables 8 and 9 at 25/26 — 69 of 78 across tables 3 to 9 since 11 August, with every miss traceable to four individual facts rather than a broken method.</p><p>Subtraction opened and immediately produced the period's main finding. The no-borrow sheet lost four marks to a second systematic rule that nobody had logged before, and the borrow sheet lost all twelve to the classic smaller-from-larger bug.</p><p>Reasoning hit its first wall in eight weeks: Coding–Decoding was abandoned at 3/20 with fifteen questions untouched, then scored 18/20 the following day. An unfamiliar question <em>type</em> stops her on first contact and one night's gap is enough to clear it — worth remembering before reading any first attempt as a weakness.</p><p>The 71% on 23 August is not fatigue. The 0/12 borrow sheet was submitted fourteen minutes into that session; the 25/26 tables sheet came two and a half hours later. The sheet was new, not the child tired.</p>
+  <figure class="chart">
+  <figcaption>Accuracy per practice day, whole history. The shaded span is this reporting period. Hover any point for the sheet count and blanks.</figcaption>
+  <svg viewBox="0 0 980 200" role="img" aria-label="Accuracy per practice day across the whole history.">
+    <rect class="period-band" x="676.5" y="14" width="287.5" height="152"></rect>
+    <line class="grid-line" x1="44" y1="166.0" x2="964" y2="166.0"></line><line class="grid-line" x1="44" y1="115.3" x2="964" y2="115.3"></line><line class="grid-line" x1="44" y1="64.7" x2="964" y2="64.7"></line><line class="grid-line" x1="44" y1="14.0" x2="964" y2="14.0"></line>
+    <text class="axis-txt" x="36" y="170.0" text-anchor="end">40</text><text class="axis-txt" x="36" y="119.3" text-anchor="end">60</text><text class="axis-txt" x="36" y="68.7" text-anchor="end">80</text><text class="axis-txt" x="36" y="18.0" text-anchor="end">100%</text>
+    <polygon class="series-area" points="44.0,166 44.0,60.1 101.5,48.2 159.0,17.0 216.5,17.0 274.0,83.4 331.5,28.7 389.0,14.0 446.5,14.0 504.0,14.0 561.5,25.1 619.0,54.0 676.5,14.0 734.0,135.1 791.5,28.2 849.0,28.4 906.5,86.5 964.0,44.1 964.0,166"></polygon>
+    <polyline class="series-line" points="44.0,60.1 101.5,48.2 159.0,17.0 216.5,17.0 274.0,83.4 331.5,28.7 389.0,14.0 446.5,14.0 504.0,14.0 561.5,25.1 619.0,54.0 676.5,14.0 734.0,135.1 791.5,28.2 849.0,28.4 906.5,86.5 964.0,44.1"></polyline>
+    <circle class="series-dot faded" cx="44.0" cy="60.1" r="4"><title>2026-07-07 — 81.8% (36/44)</title></circle><circle class="series-dot faded" cx="101.5" cy="48.2" r="4"><title>2026-07-08 — 86.5% (45/52)</title></circle><circle class="series-dot faded" cx="159.0" cy="17.0" r="4"><title>2026-07-15 — 98.8% (79/80)</title></circle><circle class="series-dot faded" cx="216.5" cy="17.0" r="4"><title>2026-07-17 — 98.8% (83/84)</title></circle><circle class="series-dot faded" cx="274.0" cy="83.4" r="4"><title>2026-07-20 — 72.6% (77/106, 28 blank)</title></circle><circle class="series-dot faded" cx="331.5" cy="28.7" r="4"><title>2026-07-22 — 94.2% (98/104)</title></circle><circle class="series-dot faded" cx="389.0" cy="14.0" r="4"><title>2026-07-24 — 100.0% (20/20)</title></circle><circle class="series-dot faded" cx="446.5" cy="14.0" r="4"><title>2026-07-26 — 100.0% (113/113)</title></circle><circle class="series-dot faded" cx="504.0" cy="14.0" r="4"><title>2026-08-05 — 100.0% (61/61)</title></circle><circle class="series-dot faded" cx="561.5" cy="25.1" r="4"><title>2026-08-06 — 95.6% (87/91, 2 blank)</title></circle><circle class="series-dot faded" cx="619.0" cy="54.0" r="4"><title>2026-08-09 — 84.2% (48/57, 9 blank)</title></circle><circle class="series-dot faded" cx="676.5" cy="14.0" r="4"><title>2026-08-10 — 100.0% (24/24)</title></circle><circle class="series-dot" cx="734.0" cy="135.1" r="4"><title>2026-08-11 — 52.2% (24/46, 15 blank)</title></circle><circle class="series-dot" cx="791.5" cy="28.2" r="4"><title>2026-08-12 — 94.4% (34/36)</title></circle><circle class="series-dot" cx="849.0" cy="28.4" r="4"><title>2026-08-21 — 94.3% (99/105)</title></circle><circle class="series-dot" cx="906.5" cy="86.5" r="4"><title>2026-08-23 — 71.4% (100/140, 7 blank)</title></circle><circle class="series-dot" cx="964.0" cy="44.1" r="4"><title>2026-08-24 — 88.1% (37/42)</title></circle>
+    <text class="axis-txt" x="44.0" y="188" text-anchor="middle">07-07</text><text class="axis-txt" x="101.5" y="188" text-anchor="middle">07-08</text><text class="axis-txt" x="159.0" y="188" text-anchor="middle">07-15</text><text class="axis-txt" x="216.5" y="188" text-anchor="middle">07-17</text><text class="axis-txt" x="274.0" y="188" text-anchor="middle">07-20</text><text class="axis-txt" x="331.5" y="188" text-anchor="middle">07-22</text><text class="axis-txt" x="389.0" y="188" text-anchor="middle">07-24</text><text class="axis-txt" x="446.5" y="188" text-anchor="middle">07-26</text><text class="axis-txt" x="504.0" y="188" text-anchor="middle">08-05</text><text class="axis-txt" x="561.5" y="188" text-anchor="middle">08-06</text><text class="axis-txt" x="619.0" y="188" text-anchor="middle">08-09</text><text class="axis-txt" x="676.5" y="188" text-anchor="middle">08-10</text><text class="axis-txt" x="734.0" y="188" text-anchor="middle">08-11</text><text class="axis-txt" x="791.5" y="188" text-anchor="middle">08-12</text><text class="axis-txt" x="849.0" y="188" text-anchor="middle">08-21</text><text class="axis-txt" x="906.5" y="188" text-anchor="middle">08-23</text><text class="axis-txt" x="974.0" y="188" text-anchor="end">08-24</text>
+  </svg>
+</figure>
+</section>
+<section>
+  <div class="sec-head"><h2>Where each track stands</h2><span class="note">Gate board</span></div>
+  <div class="scroll"><table><thead><tr><th>Track</th><th>Where she is</th><th>Status</th><th>Last evidence</th><th>Next gate</th></tr></thead><tbody><tr><td><strong>Mental Addition</strong></td><td>Stage 9 keystone cleared; Stage 10 open</td><td><span class="chip good"><span class="dot"></span>mastered</span></td><td class="mono">12/12 · 10 Aug</td><td>Stage 10 — multi-addend &amp; real-world</td></tr><tr><td><strong>Mental Subtraction</strong></td><td>Stage 2 — borrow (keystone)</td><td><span class="chip gap"><span class="dot"></span>gap open</span></td><td class="mono">10/12 · 24 Aug</td><td>Clean 12/12 on Worksheet 4</td></tr><tr><td><strong>Mental Multiplication</strong></td><td>Stage 3 — tables 6–9 cleared</td><td><span class="chip watch"><span class="dot"></span>in progress</span></td><td class="mono">25/26 · 23 Aug</td><td>Mixed-table mastery (mul-w6)</td></tr><tr><td><strong>English (IEO)</strong></td><td>Articles, Adjectives underway</td><td><span class="chip watch"><span class="dot"></span>in progress</span></td><td class="mono">12/15 · 24 Aug</td><td>Adjectives L3 + mini paper</td></tr><tr><td><strong>GK (IGKO)</strong></td><td>Unit 1 complete</td><td><span class="chip good"><span class="dot"></span>clean</span></td><td class="mono">18/18 · 23 Aug</td><td>Unit 2 — Plants &amp; Animals</td></tr><tr><td><strong>Reasoning (SOF)</strong></td><td>Drills 1–5 done</td><td><span class="chip watch"><span class="dot"></span>in progress</span></td><td class="mono">18/20 · 12 Aug</td><td>Drill 6 — mixed</td></tr><tr><td><strong>Maths (IMO topics)</strong></td><td>Geometry L1 first contact</td><td><span class="chip neutral"><span class="dot"></span>untaught</span></td><td class="mono">11/15 · 23 Aug</td><td>Geometry deep-dive, then L2</td></tr><tr><td><strong>Science (NSO)</strong></td><td>Units generated, none attempted</td><td><span class="chip neutral"><span class="dot"></span>dormant</span></td><td class="mono">no sheets since Jun</td><td>Unit 2 — Food</td></tr></tbody></table></div>
+</section>
+<section>
+  <div class="sec-head"><h2>Open gaps</h2><span class="note">Carried until the evidence closes them</span></div>
+  <div class="card stripe watch">
+  <div class="card-head">
+    <div><div class="kicker">Mental Subtraction <span class="meta">opened 23 Aug</span></div><h3>Smaller-from-larger, borrow ignored</h3></div>
+    <span class="chip watch"><span class="dot"></span>improving</span>
+  </div>
+  <p><p>She takes the smaller digit from the larger one in each column and ignores the borrow entirely. <span class="mono">34 − 17</span> becomes "3 take 1 is 2, 7 take 4 is 3" → 23. All twelve answers on the sheet follow it exactly — not one is a random slip, which means one teaching intervention reaches every instance at once.</p><p>The 24 August re-attempt scored 10/12. The two survivors are the hardest family in the set: <span class="mono">30 − 22</span> → 20 and <span class="mono">51 − 24</span> → 40. She now borrows and then loses the units, which is a partial method rather than the old blanket rule.</p></p>
+  <div class="scroll"><table><thead><tr><th>Question</th><th class="num">Wrote</th><th class="num">Correct</th><th>What happened</th><th>Date</th></tr></thead><tbody><tr><td class="num">34 − 17 = __</td><td class="num wrong">23</td><td class="num right">17</td><td>smaller-from-larger, borrow ignored</td><td class="mono muted-cell">08-23</td></tr><tr><td class="num">43 − 18 = __</td><td class="num wrong">35</td><td class="num right">25</td><td>smaller-from-larger, borrow ignored</td><td class="mono muted-cell">08-23</td></tr><tr><td class="num">50 − 29 = __</td><td class="num wrong">39</td><td class="num right">21</td><td>smaller-from-larger, borrow ignored</td><td class="mono muted-cell">08-23</td></tr><tr><td class="num">42 − 18 = __</td><td class="num wrong">36</td><td class="num right">24</td><td>smaller-from-larger, borrow ignored</td><td class="mono muted-cell">08-23</td></tr><tr><td class="num">54 − 18 = __</td><td class="num wrong">44</td><td class="num right">36</td><td>smaller-from-larger, borrow ignored</td><td class="mono muted-cell">08-23</td></tr><tr><td class="num">52 − 15 = __</td><td class="num wrong">43</td><td class="num right">37</td><td>smaller-from-larger, borrow ignored</td><td class="mono muted-cell">08-23</td></tr><tr><td class="num">41 − 17 = __</td><td class="num wrong">36</td><td class="num right">24</td><td>smaller-from-larger, borrow ignored</td><td class="mono muted-cell">08-23</td></tr><tr><td class="num">41 − 14 = __</td><td class="num wrong">33</td><td class="num right">27</td><td>smaller-from-larger, borrow ignored</td><td class="mono muted-cell">08-23</td></tr><tr><td class="num">30 − 22 = __</td><td class="num wrong">12</td><td class="num right">8</td><td>smaller-from-larger, borrow ignored</td><td class="mono muted-cell">08-23</td></tr><tr><td class="num">54 − 17 = __</td><td class="num wrong">43</td><td class="num right">37</td><td>smaller-from-larger, borrow ignored</td><td class="mono muted-cell">08-23</td></tr><tr><td class="num">51 − 24 = __</td><td class="num wrong">33</td><td class="num right">27</td><td>smaller-from-larger, borrow ignored</td><td class="mono muted-cell">08-23</td></tr><tr><td class="num">31 − 19 = __</td><td class="num wrong">28</td><td class="num right">12</td><td>smaller-from-larger, borrow ignored</td><td class="mono muted-cell">08-23</td></tr></tbody></table></div>
+  <p class="fix"><strong>Fix:</strong> Two or three short sheets on borrowing across a zero specifically, then re-run Worksheet 4 for a clean 12/12 before opening the next subtraction stage.</p>
+</div><div class="card stripe gap">
+  <div class="card-head">
+    <div><div class="kicker">Mental Subtraction <span class="meta">opened 23 Aug</span></div><h3>Adds the tens, subtracts the units</h3></div>
+    <span class="chip gap"><span class="dot"></span>new</span>
+  </div>
+  <p><p>On the no-borrow sheet the tens digit went <em>up</em> by the amount she should have taken away while the units came down correctly. The operation flips halfway through the sum. This is the same shape as the <span class="mono">2 × 6 = 8</span> error from July — she reads the numbers before she reads the sign.</p></p>
+  <div class="scroll"><table><thead><tr><th>Question</th><th class="num">Wrote</th><th class="num">Correct</th><th>What happened</th><th>Date</th></tr></thead><tbody><tr><td class="num">86 − 11 = __</td><td class="num wrong">95</td><td class="num right">75</td><td>adds the tens, subtracts the units</td><td class="mono muted-cell">08-23</td></tr><tr><td class="num">89 − 12 = __</td><td class="num wrong">97</td><td class="num right">77</td><td>adds the tens, subtracts the units</td><td class="mono muted-cell">08-23</td></tr></tbody></table></div>
+  <p class="fix"><strong>Fix:</strong> Mixed +/− sheets where she must say which operation before answering. Two instances only so far, so watch it rather than building a course around it.</p>
+</div><div class="card stripe gap">
+  <div class="card-head">
+    <div><div class="kicker">Mental Addition <span class="meta">opened 23 Aug</span></div><h3>Three-digit missing addends go blank</h3></div>
+    <span class="chip gap"><span class="dot"></span>third sighting</span>
+  </div>
+  <p><p>All four missing-addend questions on the 4-digit addition sheet were skipped while she attempted the sections either side of them. This is the third independent sighting of the same gap: the missing-minuend errors on the marked school sheet dated 21 July, the missing-factor misses in July's tables work, and now this. Small ones — <span class="mono">4 + __ = 10</span> — she gets right; three-digit ones she will not start.</p></p>
+  <div class="scroll"><table><thead><tr><th>Question</th><th class="num">Wrote</th><th class="num">Correct</th><th>What happened</th><th>Date</th></tr></thead><tbody><tr><td class="num">708 + __ = 940</td><td class="num wrong">blank</td><td class="num right">232</td><td>not attempted</td><td class="mono muted-cell">08-23</td></tr><tr><td class="num">484 + __ = 774</td><td class="num wrong">blank</td><td class="num right">290</td><td>not attempted</td><td class="mono muted-cell">08-23</td></tr><tr><td class="num">436 + __ = 740</td><td class="num wrong">blank</td><td class="num right">304</td><td>not attempted</td><td class="mono muted-cell">08-23</td></tr><tr><td class="num">284 + __ = 614</td><td class="num wrong">blank</td><td class="num right">330</td><td>not attempted</td><td class="mono muted-cell">08-23</td></tr></tbody></table></div>
+  <p class="fix"><strong>Fix:</strong> Build a dedicated missing-addend sheet and sit with her on it. Teach as "take it back off", not as a puzzle. This has now been open since July and is the most under-treated item in the file.</p>
+</div>
+</section>
+<section>
+  <div class="sec-head"><h2>Every miss, classified</h2><span class="note">75 misses this period</span></div>
+  <p>Blanks and wrong answers need opposite responses — a blank sheet gets re-given early in a session, a wrong sheet gets taught. They are counted separately throughout.</p>
+  <div class="scroll"><table><thead><tr><th>Class</th><th>Meaning</th><th class="num">Count</th></tr></thead><tbody><tr><td><strong>Wrong option</strong></td><td>Multiple-choice miss, no arithmetic to inspect</td><td class="num">25</td></tr><tr><td><strong>Not attempted</strong></td><td>Left empty — fatigue, unfamiliarity, or ran out of sheet</td><td class="num">22</td></tr><tr><td><strong>Wrong rule</strong></td><td>A systematic misconception applied more than once</td><td class="num">14</td></tr><tr><td><strong>Wrong stored fact</strong></td><td>One memorised answer is wrong</td><td class="num">8</td></tr><tr><td><strong>Near miss</strong></td><td>Off by a step, no pattern</td><td class="num">5</td></tr><tr><td><strong>Transcription</strong></td><td>Knew it, wrote it wrong — reversal, smear, misaligned row</td><td class="num">1</td></tr></tbody></table></div>
+</section>
+<section>
+  <div class="sec-head"><h2>Same answer, more than once</h2><span class="note">Stored wrong, not guessed</span></div>
+  <p>A miss repeated identically is a memorised-wrong fact rather than a slip. These are the cheapest things on the list to fix.</p>
+  <div class="scroll"><table><thead><tr><th>Question</th><th class="num">Answer given</th>
+  <th class="num">Times</th><th>Dates</th></tr></thead><tbody><tr><td class="num">7 × 8 = __</td><td class="num wrong">55</td><td class="num">3&times;</td><td class="mono">08-21</td></tr><tr><td class="num">4 × 8 = __</td><td class="num wrong">48</td><td class="num">2&times;</td><td class="mono">08-11</td></tr><tr><td class="num">4 × 7 = __</td><td class="num wrong">42</td><td class="num">2&times;</td><td class="mono">08-11</td></tr></tbody></table></div>
+</section>
+<section>
+  <div class="sec-head"><h2>Re-attempts and unfinished sheets</h2><span class="note">The learning signal</span></div>
+  <h3 class="sub">Sheets she came back to</h3><ul class="retries"><li><strong>Drill 5 — Coding–Decoding</strong><p><span class="mono">3/20</span> <span class="meta">08-11</span> → <span class="mono">18/20</span> <span class="meta">08-12</span></p></li><li><strong>Worksheet 4 (L1 Textbook) — 2-digit − 2-digit with Borrow</strong><p><span class="mono">0/12</span> <span class="meta">08-23</span> → <span class="mono">10/12</span> <span class="meta">08-24</span></p></li></ul>
+  <h3 class="sub">Left unfinished</h3>
+  <div class="scroll"><table><thead><tr><th>Sheet</th><th class="num">Score</th><th class="num">Blank</th><th>Date</th></tr></thead><tbody><tr><td>Drill 5 — Coding–Decoding</td><td class="num">3/20</td><td class="num">15</td><td class="mono">08-11</td></tr></tbody></table></div>
+</section>
+<section>
+  <div class="sec-head"><h2>By track</h2><span class="note">This period</span></div>
+  <div class="card"><div class="bars"><div class="bar-row"><span>GK (IGKO)</span><span class="bar-track"><span class="bar-fill" style="width:100.0%"></span></span><span class="bar-val">63/63 · 100%</span></div><div class="bar-row"><span>Mental Multiplication</span><span class="bar-track"><span class="bar-fill" style="width:88.5%"></span></span><span class="bar-val">69/78 · 88%</span></div><div class="bar-row"><span>English (IEO)</span><span class="bar-track"><span class="bar-fill" style="width:82.8%"></span></span><span class="bar-val">77/93 · 83%</span></div><div class="bar-row"><span>Mental Addition</span><span class="bar-track"><span class="bar-fill" style="width:78.6%"></span></span><span class="bar-val">33/42 · 79%</span></div><div class="bar-row"><span>Maths (IMO topics)</span><span class="bar-track"><span class="bar-fill" style="width:73.3%"></span></span><span class="bar-val">11/15 · 73%</span></div><div class="bar-row"><span>Mental Subtraction</span><span class="bar-track"><span class="bar-fill" style="width:52.6%"></span></span><span class="bar-val">20/38 · 53%</span></div><div class="bar-row"><span>Reasoning (SOF)</span><span class="bar-track"><span class="bar-fill" style="width:52.5%"></span></span><span class="bar-val">21/40 · 52%</span></div></div>
+  <p class="tablenote">Read these next to the sheet counts. Subtraction sits at 53% on 38 questions, twelve of which are the single borrow sheet; reasoning sits at 53% because one abandoned first attempt is in there alongside a 20/20 and an 18/20.</p></div>
+</section>
+<section>
+  <div class="sec-head"><h2>What to do next</h2><span class="note">In order</span></div>
+  <ol class="actions"><li><div><strong>Borrow across zero — two or three short sheets, then re-run Worksheet 4</strong><p>She went 0/12 to 10/12 in a day; the two survivors are both the borrow-across-zero family.</p></div></li><li><div><strong>Build a missing-addend sheet and work through it together</strong><p>Third sighting since July, and she skips rather than guesses — she knows she doesn't know.</p></div></li><li><div><strong>Re-give Worksheet 12 (3-digit + 2-digit) first thing in a session</strong><p>Still at 7/14 from 9 Aug, all blanks, and she has since cleared two harder sheets. Bookkeeping, not teaching.</p></div></li><li><div><strong>Drill four facts, not four tables: 7×8, 4×7, 4×8, check 8×3</strong><p>Everything else in tables 3–9 is clean since 11 Aug.</p></div></li><li><div><strong>Practise 4-digit addition in column form with word-problem wrappers</strong><p>Two answers exactly 90 short — a carry dropping in the tens-to-hundreds step under column layout, while her mental carry is perfect.</p></div></li><li><div><strong>Teach comparatives as three rules, and a/an by sound</strong><p>difficulter, more good, and "a umbrella" are all one sitting's work.</p></div></li><li><div><strong>Geometry deep-dive before the next IMO sheet</strong><p>Four definitional misses out of fifteen on first contact — untaught, not weak.</p></div></li></ol>
+  
+</section>
+<section>
+  <div class="sec-head"><h2>Do again</h2><span class="note">5 sheets, all already built</span></div>
+  <p>Every sheet whose latest sitting was below par or left unfinished, curated down to the five that settle an open question. <strong>One of them isn't what its title says:</strong> <span class="sid">sub-w4-l1</span> is titled "with Borrow", but its only section is <em>"Round-and-adjust — no borrowing needed!"</em> and its note reads <span class="mono">62 &minus; 38 &rarr; 62 &minus; 40 = 22, give back 2 &rarr; 24</span>. It teaches a mental strategy, not column subtraction — and <span class="sid">add-w11</span>, the sheet that teaches that same move for addition, is the one sheet in Stages 1–9 she skipped. The 0/12 was a sequencing mistake, not a borrowing failure. Give <span class="sid">add-w11</span> first.</p>
+  <div class="scroll"><table><thead><tr><th>Sheet</th><th>Where it stands</th><th>Why re-give it</th><th>Give after</th></tr></thead>
+  <tbody><tr><td><span class="sid">sub-w4-l1</span><br><span class="muted-cell">2-digit &minus; 2-digit with borrow</span></td><td class="num">0/12 &rarr; 10/12<br><span class="muted-cell">23–24 Aug</span></td><td>Two survivors left, both borrow-across-zero. A clean 12/12 is the gate to the rest of the subtraction track.</td><td><span class="sid">add-w11</span></td></tr><tr><td><span class="sid">add-w12</span><br><span class="muted-cell">3-digit + 2-digit</span></td><td class="num">7/14<br><span class="muted-cell">9 Aug, 7 blank</span></td><td>Never wrong — she stopped mid-sheet and hasn't been back in 16 days, while clearing two harder sheets since. Bookkeeping, not teaching.</td><td><span class="sid">add-revision-2</span></td></tr><tr><td><span class="sid">mas-l3-1</span><br><span class="muted-cell">School addition to 4 digits</span></td><td class="num">13/22<br><span class="muted-cell">23 Aug, 4 blank</span></td><td>Two answers exactly 90 short and the whole missing-addend section skipped. Re-give once both are taught, to confirm the format is fixed.</td><td>new sheets 1 &amp; 2</td></tr><tr><td><span class="sid">mul-d1</span><br><span class="muted-cell">Tables 2–5 baseline</span></td><td class="num">38/44<br><span class="muted-cell">22 Jul</span></td><td>The 42+/44 gate is still formally open a month later, while she has since cleared tables 6–9. One sitting closes the record.</td><td>new sheet 3</td></tr><tr><td><span class="sid">ieo-adj-l2</span><br><span class="muted-cell">Adjectives &amp; degrees, Mixed</span></td><td class="num">12/15<br><span class="muted-cell">24 Aug</span></td><td>All three misses are comparative forms — <span class="mono">difficulter</span>, <span class="mono">more good</span>, <span class="mono">pretty</span>. The deep-dive note already covers all three degrees; read it, then re-give.</td><td><span class="sid">note-ieo-adjectives</span></td></tr></tbody></table></div>
+</section>
+<section>
+  <div class="sec-head"><h2>Already written, never opened</h2><span class="note">144 sheets</span></div>
+  <p class="lede">She has attempted 56 of the 200 sheets in the app. Every track has a queue.</p>
+  <div class="card"><div class="bars"><div class="bar-row"><span>Mental Math — LTR Addition</span><span class="bar-track"><span class="bar-fill" style="width:73.1%"></span></span><span class="bar-val">19 / 26 done</span></div><div class="bar-row"><span>SOF IEO — English</span><span class="bar-track"><span class="bar-fill" style="width:55.6%"></span></span><span class="bar-val">15 / 27 done</span></div><div class="bar-row"><span>SOF — Logical Reasoning</span><span class="bar-track"><span class="bar-fill" style="width:50.0%"></span></span><span class="bar-val">5 / 10 done</span></div><div class="bar-row"><span>Mental Math — LTR Subtraction</span><span class="bar-track"><span class="bar-fill" style="width:45.5%"></span></span><span class="bar-val">5 / 11 done</span></div><div class="bar-row"><span>Mental Math — Multiplication</span><span class="bar-track"><span class="bar-fill" style="width:40.0%"></span></span><span class="bar-val">6 / 15 done</span></div><div class="bar-row"><span>Math — Addition &amp; Subtraction (School L3)</span><span class="bar-track"><span class="bar-fill" style="width:33.3%"></span></span><span class="bar-val">1 / 3 done</span></div><div class="bar-row"><span>SOF IGKO — GK</span><span class="bar-track"><span class="bar-fill" style="width:8.0%"></span></span><span class="bar-val">4 / 50 done</span></div><div class="bar-row"><span>SOF IMO — Math</span><span class="bar-track"><span class="bar-fill" style="width:3.7%"></span></span><span class="bar-val">1 / 27 done</span></div><div class="bar-row"><span>SOF NSO — Science</span><span class="bar-track"><span class="bar-fill" style="width:0.0%"></span></span><span class="bar-val">0 / 31 done</span></div></div>
+  <p class="tablenote">There are also 34 deep-dive notes in the app and not one recorded as read — including two that answer misses in this very report. Check the catalogue before building anything.</p></div>
+  <div class="card stripe watch" style="margin-top:16px">
+  <h3>The ones worth assigning next, per track</h3>
+  <div class="scroll"><table><thead><tr><th>Track</th><th>Assign next</th><th>Why this one</th></tr></thead>
+  <tbody><tr><td><strong>Mental addition</strong></td><td><span class="sid">add-w11</span> <span class="sid">add-revision-2</span></td><td>The skipped prerequisite, then the 12-item stamina drill built specifically for the WS12 "doesn't finish" pattern — also never used.</td></tr><tr><td><strong>Mental subtraction</strong></td><td><span class="sid">sub-w5</span> <span class="sid">sub-w4-l2</span></td><td>Complements from 100 teaches "all from 9, last from 10" — <span class="mono">100 &minus; 63 &rarr; 37</span>, no borrowing ever. That is exactly the method for <span class="mono">30 &minus; 22</span>, the survivor she still missed.</td></tr><tr><td><strong>Mental multiplication</strong></td><td><span class="sid">mul-w5</span> <span class="sid">mul-w6</span></td><td>Tables 6–9 consolidation then the mixed-table mastery test — she has earned both at 89% since 11 Aug.</td></tr><tr><td><strong>School L3</strong></td><td><span class="sid">mas-l3-2</span></td><td>Column subtraction and word stories — the exact section the school sheet marked "Absent". Still untested.</td></tr><tr><td><strong>Reasoning</strong></td><td><span class="sid">lr-6</span> &rarr; <span class="sid">lr-10</span></td><td>Five drills left. Four of the five she has done were 20/20; the drill schedule is holding her back, not stretching her.</td></tr><tr><td><strong>English</strong></td><td><span class="sid">note-ieo-adjectives</span> <span class="sid">ieo-adj-l3</span> <span class="sid">ieo-rc-l3</span></td><td>The adjectives deep-dive already sets out all three degrees including the irregulars. Read it, finish the two units in progress; mixed papers and mocks (7 sheets) stay closed until then.</td></tr><tr><td><strong>Maths — IMO</strong></td><td><span class="sid">note-imo-geometry</span> &rarr; <span class="sid">imo-geo-l2</span></td><td>The geometry deep-dive already exists and covers every fact she missed — sides, corners, faces, tally marks. Read it, then continue. Time &amp; Money is the friendliest untouched topic after that.</td></tr><tr><td><strong>GK</strong></td><td><span class="sid">gk-u2-l1</span> &rarr; <span class="sid">gk-u2-mini</span></td><td>Unit 1 went 4/4 sheets at 100%. Unit 2 is Plants &amp; Animals — closest to what she already knows from EVS.</td></tr><tr><td><strong>Science</strong></td><td><span class="sid">nso-u3-l1</span> (Human Body)</td><td>Opening a cold track: start with the unit a Class III child has the most existing knowledge of, not with Unit 2.</td></tr></tbody></table></div>
+</div>
+</section>
+<section>
+  <div class="sec-head"><h2>Build these</h2><span class="note">Nothing in the app covers them</span></div>
+  <p>Five sheets, each checked against the catalogue first. Two more were drafted and dropped once <span class="sid">note-imo-geometry</span> and <span class="sid">note-ieo-adjectives</span> turned up already covering the same misses — assign those instead.</p>
+  <div class="card stripe gap">
+  <div class="kicker">1 &middot; drill &middot; highest priority</div>
+  <h3>Missing number — all four positions</h3>
+  <p><p>The gap with three independent sightings and no sheet anywhere in the app targeting it. Twenty items across every position: <span class="mono">708 + __ = 940</span>, <span class="mono">__ + 232 = 940</span>, <span class="mono">__ &minus; 400 = 400</span>, <span class="mono">900 &minus; __ = 145</span>, plus the school phrasing <span class="mono">850 + &#9733; = 1500</span>.</p></p>
+  <p class="fix"><strong>Settles:</strong> whether she can't do it or won't start it. She leaves these blank rather than guessing, which means she knows she doesn't know — so a blank result here is itself the answer, and the sheet should be sat through with her, not left alone.</p>
+</div><div class="card stripe gap">
+  <div class="kicker">2 &middot; drill</div>
+  <h3>Column carry — 4-digit, word-problem wrappers</h3>
+  <p><p>Twelve sums in column layout, half of them dressed as word problems, all with a carry crossing tens into hundreds. Her mental carry is perfect through Stage 9; two answers on <span class="sid">mas-l3-1</span> were exactly 90 short, which is that carry dropping under column layout.</p></p>
+  <p class="fix"><strong>Settles:</strong> whether the format or the arithmetic is the problem. If she scores well here and still misses on <span class="sid">mas-l3-1</span>, it's the word-problem wrapper, not the carry.</p>
+</div><div class="card stripe watch">
+  <div class="kicker">3 &middot; drill</div>
+  <h3>Four facts — 7&amp;times;8, 4&amp;times;7, 4&amp;times;8, 8&amp;times;3</h3>
+  <p><p>Modelled on <span class="sid">mul-rev-1</span>, the 30-item weak-fact drill that cleared the tables 3/4 bug in one sitting. Those four facts and their reversals hammered in mixed order. <span class="mono">7&times;8</span> came back as 55 three times in one sheet — a stored wrong answer, not a slip.</p></p>
+  <p class="fix"><strong>Settles:</strong> the last four misses in tables 3–9, before <span class="sid">mul-d1</span> is re-run for the gate.</p>
+</div><div class="card stripe watch">
+  <div class="kicker">4 &middot; diagnostic</div>
+  <h3>Name the operation before you answer</h3>
+  <p><p>Twenty mixed <span class="mono">+</span> and <span class="mono">&minus;</span> items where she must tick the operation before writing the answer. Targets the recurring bug: <span class="mono">2 &times; 6 &rarr; 8</span> in July, <span class="mono">86 &minus; 11 &rarr; 95</span> in August — she reads the numbers before the sign, and on the second one the operation flipped halfway through the sum.</p></p>
+  <p class="fix"><strong>Settles:</strong> whether ticking the operation first eliminates it. If it does, that becomes a habit to build; if not, it's an attention issue rather than a reading one.</p>
+</div><div class="card stripe neutral">
+  <div class="kicker">5 &middot; diagnostic</div>
+  <h3>Number relationships — the school-sheet gaps</h3>
+  <p><p>Three things the marked school sheet from 21 July exposed and nothing since has re-tested: predecessor and successor in <em>both</em> phrasings ("the predecessor of 3,299 is __" <em>and</em> "3,299 is the predecessor of __"), comparing after subtracting 0 versus 1 (<span class="mono">6110 &minus; 1 __ 6110 &minus; 0</span>), and writing the complete statement rather than just the corrected number.</p></p>
+  <p class="fix"><strong>Settles:</strong> whether the inverted-phrasing failure was a one-off or is still live five weeks on. The last item is pure marks recovery — the teacher's own note was "write complete statement".</p>
+</div>
+</section>
+<section>
+  <div class="sec-head"><h2>A three-week order</h2><span class="note">Roughly one maths sheet and one olympiad sheet a day</span></div>
+  <div class="weeks"><div class="week"><h3>Week 1 — close the borrow gap</h3><ol><li><span class="sid">add-w11</span> the skipped prerequisite</li><li>New sheet 1 — missing number, sat through together</li><li><span class="sid">sub-w4-l1</span> re-run</li><li><span class="sid">sub-w5</span> complements from 100</li><li>New sheet 3 — the four facts</li><li>Alongside: <span class="sid">ieo-adj-l3</span>, <span class="sid">lr-6</span></li></ol></div><div class="week"><h3>Week 2 — gates and formats</h3><ol><li><span class="sid">sub-w4-l2</span>, then <span class="sid">sub-w4-mastery</span></li><li><span class="sid">mul-d1</span> re-run — close the 42+/44 gate</li><li>New sheet 2 — column carry</li><li><span class="sid">add-revision-2</span>, then <span class="sid">add-w12</span></li><li><span class="sid">note-ieo-adjectives</span>, then re-give <span class="sid">ieo-adj-l2</span></li><li>Alongside: <span class="sid">gk-u2-l1</span>, <span class="sid">lr-7</span></li></ol></div><div class="week"><h3>Week 3 — move forward</h3><ol><li><span class="sid">mul-w5</span> then <span class="sid">mul-w6</span> mastery</li><li><span class="sid">mas-l3-1</span> re-run, then <span class="sid">mas-l3-2</span></li><li><span class="sid">note-imo-geometry</span>, then <span class="sid">imo-geo-l2</span></li><li>New sheet 5 — number relationships</li><li><span class="sid">add-w14-mastery</span>, <span class="sid">add-w15</span></li><li>Alongside: <span class="sid">nso-u3-l1</span>, <span class="sid">lr-8</span></li></ol></div></div>
+  <div class="card stripe good" style="margin-top:20px"><h3>One scheduling note</h3><p style="margin-bottom:0">Her three abandoned sheets — <span class="sid">add-w12</span>, <span class="sid">lr-5</span>, and the 20 July diagnostic — were all late in long sessions, and every one was recovered when re-given fresh. The 17-minute session on 10 August was clean start to finish on both sheets. Put anything new or hard first, and stop before the third sheet.</p></div>
+</section>
+<p class="footnote">
+  Generated 2026-08-25 from <code>results/results.csv</code> in this repository — 1205 answers across 62 sheets, data through 2026-08-24.<br><br>
+  Method: repeated &ldquo;Finish &amp; Check&rdquo; presses inside one sitting collapse into a single attempt; where a sheet was attempted more than once on the same day the best attempt is counted, and the other attempts are reported separately when they were abandoned. Blanks count as incorrect but are tracked apart from wrong answers throughout. <code>total_time_s</code> in this file is unreliable, so no speed claims are made.<br><br>
+  Earlier reports are kept alongside this one in <code>reports/</code>.
+</p>
+</div></body></html>

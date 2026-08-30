@@ -1,0 +1,207 @@
+{
+  "report_number": 1,
+  "generated_on": "2026-08-25",
+  "covered_through": "2026-08-24",
+  "period_accuracy": 79.7,
+  "cumulative_accuracy": 88.4,
+  "artifact_url": "https://claude.ai/code/artifact/f54fbd2b-8f12-433f-8780-8b99b223ac1e",
+  "gates": [
+    {
+      "track": "Mental Addition",
+      "stage": "Stage 9 keystone cleared; Stage 10 open",
+      "status": "mastered",
+      "evidence": "12/12 · 10 Aug",
+      "next_gate": "Stage 10 — multi-addend & real-world"
+    },
+    {
+      "track": "Mental Subtraction",
+      "stage": "Stage 2 — borrow (keystone)",
+      "status": "blocked",
+      "evidence": "10/12 · 24 Aug",
+      "next_gate": "Clean 12/12 on Worksheet 4"
+    },
+    {
+      "track": "Mental Multiplication",
+      "stage": "Stage 3 — tables 6–9 cleared",
+      "status": "in-progress",
+      "evidence": "25/26 · 23 Aug",
+      "next_gate": "Mixed-table mastery (mul-w6)"
+    },
+    {
+      "track": "English (IEO)",
+      "stage": "Articles, Adjectives underway",
+      "status": "in-progress",
+      "evidence": "12/15 · 24 Aug",
+      "next_gate": "Adjectives L3 + mini paper"
+    },
+    {
+      "track": "GK (IGKO)",
+      "stage": "Unit 1 complete",
+      "status": "mastered",
+      "evidence": "18/18 · 23 Aug",
+      "next_gate": "Unit 2 — Plants & Animals"
+    },
+    {
+      "track": "Reasoning (SOF)",
+      "stage": "Drills 1–5 done",
+      "status": "in-progress",
+      "evidence": "18/20 · 12 Aug",
+      "next_gate": "Drill 6 — mixed"
+    },
+    {
+      "track": "Maths (IMO topics)",
+      "stage": "Geometry L1 first contact",
+      "status": "not-started",
+      "evidence": "11/15 · 23 Aug",
+      "next_gate": "Geometry deep-dive, then L2"
+    },
+    {
+      "track": "Science (NSO)",
+      "stage": "Units generated, none attempted",
+      "status": "not-started",
+      "evidence": "no sheets since Jun",
+      "next_gate": "Unit 2 — Food"
+    }
+  ],
+  "gaps": [
+    {
+      "id": "borrow-smaller-from-larger",
+      "track": "Mental Subtraction",
+      "title": "Smaller-from-larger, borrow ignored",
+      "opened": "2026-08-23",
+      "status": "improving",
+      "history": [
+        {
+          "date": "2026-08-23",
+          "evidence": "0/12"
+        },
+        {
+          "date": "2026-08-24",
+          "evidence": "10/12"
+        }
+      ],
+      "closed_on": null
+    },
+    {
+      "id": "subtraction-tens-added",
+      "track": "Mental Subtraction",
+      "title": "Adds the tens, subtracts the units",
+      "opened": "2026-08-23",
+      "status": "new",
+      "history": [
+        {
+          "date": "2026-08-23",
+          "evidence": "2 instances on WS3"
+        }
+      ],
+      "closed_on": null
+    },
+    {
+      "id": "missing-addend-blank",
+      "track": "Mental Addition",
+      "title": "Three-digit missing addends go blank",
+      "opened": "2026-07-21",
+      "status": "open",
+      "history": [
+        {
+          "date": "2026-07-21",
+          "evidence": "school sheet, missing minuend"
+        },
+        {
+          "date": "2026-08-23",
+          "evidence": "4/4 blank on L3 WS1"
+        }
+      ],
+      "closed_on": null
+    }
+  ],
+  "actions": [
+    {
+      "id": "a1",
+      "title": "Borrow across zero — two or three short sheets, then re-run Worksheet 4",
+      "opened": "2026-08-25",
+      "status": "open"
+    },
+    {
+      "id": "a2",
+      "title": "Build a missing-addend sheet and work through it together",
+      "opened": "2026-08-25",
+      "status": "open"
+    },
+    {
+      "id": "a3",
+      "title": "Re-give Worksheet 12 (3-digit + 2-digit) first thing in a session",
+      "opened": "2026-08-25",
+      "status": "open"
+    },
+    {
+      "id": "a4",
+      "title": "Drill four facts, not four tables: 7×8, 4×7, 4×8, check 8×3",
+      "opened": "2026-08-25",
+      "status": "open"
+    },
+    {
+      "id": "a5",
+      "title": "Practise 4-digit addition in column form with word-problem wrappers",
+      "opened": "2026-08-25",
+      "status": "open"
+    },
+    {
+      "id": "a6",
+      "title": "Teach comparatives as three rules, and a/an by sound",
+      "opened": "2026-08-25",
+      "status": "open"
+    },
+    {
+      "id": "a7",
+      "title": "Geometry deep-dive before the next IMO sheet",
+      "opened": "2026-08-25",
+      "status": "open"
+    }
+  ],
+  "catalogue": {
+    "built": 200,
+    "attempted": 56,
+    "untouched_count": 144,
+    "notes_total": 34
+  },
+  "build_queue": [
+    {
+      "id": "new-missing-number",
+      "title": "Missing number — all four positions",
+      "status": "to-build",
+      "opened": "2026-08-25"
+    },
+    {
+      "id": "new-column-carry",
+      "title": "Column carry — 4-digit, word-problem wrappers",
+      "status": "to-build",
+      "opened": "2026-08-25"
+    },
+    {
+      "id": "new-four-facts",
+      "title": "Four facts — 7x8, 4x7, 4x8, 8x3",
+      "status": "to-build",
+      "opened": "2026-08-25"
+    },
+    {
+      "id": "new-name-the-operation",
+      "title": "Name the operation before you answer",
+      "status": "to-build",
+      "opened": "2026-08-25"
+    },
+    {
+      "id": "new-number-relationships",
+      "title": "Number relationships — the school-sheet gaps",
+      "status": "to-build",
+      "opened": "2026-08-25"
+    }
+  ],
+  "redo_queue": [
+    "sub-w4-l1",
+    "add-w12",
+    "mas-l3-1",
+    "mul-d1",
+    "ieo-adj-l2"
+  ]
+}
