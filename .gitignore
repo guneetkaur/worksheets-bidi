@@ -7,9 +7,16 @@
 ~$*
 .DS_Store
 
-# Source photos of notebook / textbook pages (inputs, not outputs)
-**/source-images/
+# Generated worksheet illustrations
 **/assets/
+
+# ...but everything under sources/ IS versioned. Those are inputs — school
+# sample papers, notebook and textbook photos, handwriting sheets. They cannot
+# be regenerated, so they are the one place binaries earn their keep.
+!sources/**
 
 # Plugin build artefacts
 *.plugin
+
+# Superseded: the old in-folder copy of the skill, now shipped as the plugin
+.skills/

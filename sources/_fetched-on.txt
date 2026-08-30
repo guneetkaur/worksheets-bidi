@@ -1,0 +1,1 @@
+2026-04-25 — Compiled from SOF IMO/NSO/IEO official papers and sofolympiadtrainer.com patterns. Run 'update SOF papers' to refresh via WebFetch.
